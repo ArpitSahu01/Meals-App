@@ -29,8 +29,7 @@ class MyHomePageState extends State<MyHomePage> {
       body: GridView(
         children: num.map((val){
             return Container();
-          }).toList
-        ,
+          }).toList,
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: (MediaQuery.of(context).size.width)/4,
           childAspectRatio: 1/1,
