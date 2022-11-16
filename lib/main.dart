@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/numbers.dart';
 
-void main() {}
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: MyHomePage(),
     );
   }
 }
@@ -27,15 +30,18 @@ class MyHomePageState extends State<MyHomePage> {
         title: const Text('My Calculator'),
       ),
       body: GridView(
-        children: num.map((val){
-            return Container();
-          }).toList,
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: (MediaQuery.of(context).size.width)/4,
           childAspectRatio: 1/1,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
         ),
+        padding: const EdgeInsets.all(10),
+        children: number.map((val){
+          return ElevatedButton(onPressed: (){}, child: Center(
+            child: Text(val,style: TextStyle(fontSize: 20),),
+          ));
+        }).toList(),
       ),
     );
   }
