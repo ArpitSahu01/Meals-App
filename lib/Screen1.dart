@@ -22,7 +22,7 @@ class Screen1 extends StatelessWidget {
             maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            childAspectRatio: 2 / 1,
+            childAspectRatio: 2 / 2,
           ),
           children: DUMMY_CATEGORIES.map((val) {
             return InkWell(
