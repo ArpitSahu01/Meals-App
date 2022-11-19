@@ -30,6 +30,7 @@ class Screen1 extends StatelessWidget {
               splashColor: val.color,
               borderRadius: BorderRadius.circular(20),
               child: Container(
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: val.color),
@@ -37,7 +38,7 @@ class Screen1 extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     val.title,
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ),
               ),
