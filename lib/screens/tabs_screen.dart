@@ -10,35 +10,46 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabsScreen> {
+  final List<Map<String,Object>> _pages = [
+    {'page': CategoriesScreen(),'title':'Categories'},
+    {'page': FavoriteScreen(),'title':'Your Favorites'},
+  ];
+
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 1,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Meals'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                icon: Icon(Icons.category),
-                child: Text('Categories'),
-              ),
-              Tab(
-                icon: Icon(Icons.star),
-                child: Text('Favorites'),
-              ),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            CategoriesScreen(),
-            FavoriteScreen(),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_pages[_selectedPageIndex]['title'] as String),
       ),
-
+      body: _pages[_selectedPageIndex]['page'] as Widget,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: _selectPage,
+        backgroundColor: Colors.indigo,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.orangeAccent,
+        currentIndex: _selectedPageIndex,
+       // type: BottomNavigationBarType.shifting,
+        
+        items: [
+           BottomNavigationBarItem(
+       //     backgroundColor: Colors.indigo,
+            label: 'Category',
+            icon: Icon(Icons.category),
+          ),
+          BottomNavigationBarItem(
+      //        backgroundColor: Colors.indigo,
+              icon: Icon(Icons.star),
+              label: 'Favorites'),
+        ],
+      ),
     );
   }
 }
